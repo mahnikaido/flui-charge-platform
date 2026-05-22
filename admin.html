@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flui Painel Administrativo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-body">
+    <aside class="sidebar">
+      <img class="exact-logo admin-sidebar-logo" src="assets/flui-logo-purple.svg" alt="Flui" />
+      <nav>
+        <a href="./index.html">Dashboard</a>
+        <a class="active" href="./admin.html">Pontos</a>
+        <a href="./mobile.html">App</a>
+      </nav>
+    </aside>
+    <main class="admin-main">
+      <header class="admin-header">
+        <div>
+          <p class="eyebrow">Equipe <img class="inline-logo admin-eyebrow-logo" src="assets/flui-logo-purple.svg" alt="Flui" /></p>
+          <h1>Painel de recarga</h1>
+        </div>
+        <button class="primary-button" id="newStationButton">Novo ponto</button>
+      </header>
+
+      <section class="metrics-grid" aria-label="Indicadores da operação">
+        <article>
+          <span>Pontos ativos</span>
+          <strong id="metricStations">0</strong>
+        </article>
+        <article>
+          <span>Conectores</span>
+          <strong id="metricConnectors">0</strong>
+        </article>
+        <article>
+          <span>Avaliação média</span>
+          <strong id="metricRating">0</strong>
+        </article>
+      </section>
+
+      <section class="admin-layout">
+        <div class="table-panel">
+          <div class="panel-title">
+            <h2>Pontos cadastrados</h2>
+            <input id="adminSearch" type="search" placeholder="Buscar ponto" />
+          </div>
+          <div class="responsive-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Conectores</th>
+                  <th>Potência</th>
+                  <th>Status</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="adminTable"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <form class="editor-panel" id="stationForm">
+          <input type="hidden" id="stationId" />
+          <h2 id="formTitle">Cadastrar ponto</h2>
+          <label>Nome <input id="nameField" required /></label>
+          <label>Endereço <input id="addressField" required /></label>
+          <div class="form-row">
+            <label>Conectores <input id="connectorsField" required /></label>
+            <label>Potência <input id="powerField" type="number" min="1" required /></label>
+          </div>
+          <label>Horário <input id="hoursField" required /></label>
+          <label>Comodidades <input id="amenitiesField" required /></label>
+          <label>Status
+            <select id="statusField">
+              <option>Ativo</option>
+              <option>Manutenção</option>
+              <option>Em implantação</option>
+            </select>
+          </label>
+          <button class="primary-button" type="submit">Salvar ponto</button>
+        </form>
+      </section>
+
+      <section class="reviews-panel">
+        <h2>Avaliações dos motoristas</h2>
+        <div id="reviewsList" class="reviews-list"></div>
+      </section>
+    </main>
+    <script src="data.js"></script>
+    <script src="admin.js"></script>
+  </body>
+</html>
